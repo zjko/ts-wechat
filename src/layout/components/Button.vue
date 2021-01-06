@@ -1,0 +1,45 @@
+<template>
+  <div class="content"
+       @click="nav">
+    <img v-if="selected"
+         class="img"
+         :src="require('@/assets'+icon)"
+         alt="icon" />
+
+    <div class="text">{{title}}</div>
+  </div>
+</template>
+<script>
+import { Options, Vue } from "vue-class-component"
+
+@Options({
+  name: 'Button',
+  props: {
+    title: { type: String },
+    path: { type: String },
+    icon: { type: String }
+  },
+})
+
+export default class extends Vue {
+  selected = true
+  nav (e) {
+    console.log(this.path)
+    this.selected = !this.selected
+    this.$router.push(this.path)
+
+  }
+  mounted () {
+  }
+}
+</script>
+<style scoped>
+.img {
+  width: 30px;
+  height: 30px;
+}
+
+.text {
+  font-size: 12px;
+}
+</style>
