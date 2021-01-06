@@ -4,13 +4,15 @@
             :title="item.title"
             :path="item.path"
             :icon="item.icon"
+            :selected="item.selected"
+            @select="select(index)"
             :key="index" />
   </div>
 </template>
 <script>
 import { Vue, Options } from "vue-class-component";
 import Button from './Button.vue'
-import tabBar from '../tabBarConfig'
+import tabBarConfig from '../tabBarConfig'
 
 @Options({
   name: 'TabBar',
@@ -19,8 +21,37 @@ import tabBar from '../tabBarConfig'
   },
 })
 export default class TabBar extends Vue {
+  oldSelectIndex = undefined 
+  tabBar = []
   get tabBar () {
-    return tabBar
+    return this.tabBar
+  }
+  set tabBar (t){
+    this.tabBar = t
+  }
+  select(index){
+     if(this.oldSelectIndex != undefined){
+      this.tabBar[this.oldSelectIndex].selected = false  
+     }
+     this.tabBar[index].selected = true
+     this.oldSelectIndex = index
+     this.tabBar = this.tabBar.slice()
+  }
+
+
+  mounted(){
+    let list = []
+    tabBarConfig.forEach(i => {
+      list.push({
+        title: i.title,
+        path: i.path,
+        icon: i.icon,
+      })
+    })
+    list[0].selected = true
+    console.log(list)
+    this.tabBar = list
+
   }
 }
 </script>

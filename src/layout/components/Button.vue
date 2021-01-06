@@ -2,7 +2,7 @@
   <div class="content"
        @click="nav">
     <img class="img"
-         :src="require('@/assets'+icon + (selected?'':'-select') +'.svg')"
+         :src="require('@/assets'+icon + (!selected?'':'-select') +'.svg')"
          alt="icon" />
 
     <div class="text">{{title}}</div>
@@ -16,15 +16,14 @@ import { Options, Vue } from "vue-class-component"
   props: {
     title: { type: String },
     path: { type: String },
-    icon: { type: String }
+    icon: { type: String },
+    selected: { type: Boolean },
   },
 })
 
 export default class extends Vue {
-  selected = true
   nav (e) {
-    console.log(this.path)
-    this.selected = !this.selected
+    this.$emit("select",null)
     this.$router.push(this.path)
 
   }
