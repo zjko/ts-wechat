@@ -1,9 +1,8 @@
 <template>
   <div class="content"
        @click="nav">
-    <img v-if="selected"
-         class="img"
-         :src="require('@/assets'+icon)"
+    <img class="img"
+         :src="require('@/assets'+icon + (selected?'':'-select') +'.svg')"
          alt="icon" />
 
     <div class="text">{{title}}</div>
