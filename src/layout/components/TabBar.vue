@@ -21,25 +21,15 @@ import tabBarConfig from '../tabBarConfig'
   },
 })
 export default class TabBar extends Vue {
-  oldSelectIndex = undefined 
   tabBar = []
-  get tabBar () {
-    return this.tabBar
+  select (index) {
+    this.tabBar.forEach(item => {
+      item.selected = false
+    })
+    this.tabBar[index].selected = true
+    this.tabBar = this.tabBar.slice()
   }
-  set tabBar (t){
-    this.tabBar = t
-  }
-  select(index){
-     if(this.oldSelectIndex != undefined){
-      this.tabBar[this.oldSelectIndex].selected = false  
-     }
-     this.tabBar[index].selected = true
-     this.oldSelectIndex = index
-     this.tabBar = this.tabBar.slice()
-  }
-
-
-  mounted(){
+  mounted () {
     let list = []
     tabBarConfig.forEach(i => {
       list.push({
@@ -49,8 +39,8 @@ export default class TabBar extends Vue {
       })
     })
     list[0].selected = true
-    console.log(list)
     this.tabBar = list
+
 
   }
 }

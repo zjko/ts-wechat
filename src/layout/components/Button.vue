@@ -19,11 +19,14 @@ import { Options, Vue } from "vue-class-component"
     icon: { type: String },
     selected: { type: Boolean },
   },
+  emits: {
+    select: { type: String }
+  }
 })
 
 export default class extends Vue {
   nav (e) {
-    this.$emit("select",null)
+    this.$emit("select", null)
     this.$router.push(this.path)
 
   }

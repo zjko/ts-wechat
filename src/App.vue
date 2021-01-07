@@ -21,6 +21,7 @@ html {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  background-color: #efefef;
 }
 body {
   width: 100%;
