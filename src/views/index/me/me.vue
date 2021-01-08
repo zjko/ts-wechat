@@ -33,7 +33,6 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
 import CellList from "@/components/common/cell-list.vue";
 @Options({
   components: {
@@ -41,45 +40,7 @@ import CellList from "@/components/common/cell-list.vue";
   },
 })
 export default class Me extends Vue {
-  list = [
-    [
-      {
-        icon: "/me/wepay.svg",
-        name: "支付",
-        path: "123",
-      },
-    ],
-    [
-      {
-        icon: "/me/wepay.svg",
-        name: "收藏",
-        path: "123",
-      },
-      {
-        icon: "/me/wepay.svg",
-        name: "朋友圈",
-        path: "123",
-      },
-      {
-        icon: "/me/wepay.svg",
-        name: "卡包",
-        path: "123",
-      },
-      {
-        icon: "/me/wepay.svg",
-        name: "表情",
-        path: "123",
-      },
-    ],
-
-    [
-      {
-        icon: "/me/wepay.svg",
-        name: "设置",
-        path: "123",
-      },
-    ],
-  ];
+  list = require("./itemConfig.json");
 }
 </script>
 

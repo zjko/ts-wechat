@@ -10,6 +10,12 @@ export const routes = [
     children:
       index
   },
+  {
+    path: '/chat',
+    component: () => import('@/views/chat/chat.vue'),
+    name: 'chat',
+    meta: { title: '聊天界面', icon: 'chat', affix: true }
+  },
 ]
 
 // 3. Create the router instance and pass the `routes` option

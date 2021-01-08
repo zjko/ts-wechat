@@ -12,7 +12,6 @@
 <script>
 import { Vue, Options } from "vue-class-component";
 import Button from './Button.vue'
-import tabBarConfig from '../tabBarConfig'
 
 @Options({
   name: 'TabBar',
@@ -30,14 +29,7 @@ export default class TabBar extends Vue {
     this.tabBar = this.tabBar.slice()
   }
   mounted () {
-    let list = []
-    tabBarConfig.forEach(i => {
-      list.push({
-        title: i.title,
-        path: i.path,
-        icon: i.icon,
-      })
-    })
+    let list = require('../tabBarConfig.json')
     list[0].selected = true
     this.tabBar = list
 

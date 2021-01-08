@@ -1,16 +1,16 @@
 <template>
-  <router-view />
-  <TabBar class="tabBar" />
+  <ChatHead />
+  12312
 
 </template>
 
 <script lang="ts">
-import TabBar from "./components/TabBar.vue";
+import ChatHead from "./components/head.vue";
 import { Vue, Options } from "vue-class-component";
 @Options({
-  name: "IndexLayout",
+  name: "Chat",
   components: {
-    TabBar,
+    ChatHead,
   },
 })
 export default class extends Vue {}
