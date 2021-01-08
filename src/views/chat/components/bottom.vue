@@ -34,11 +34,14 @@ import { Vue, Options } from "vue-class-component";
   },
 })
 export default class extends Vue {
+  public $refs!: { input: HTMLFormElement };
+
   voiceMode = false;
 
   switchVoiceMode() {
     this.voiceMode = !this.voiceMode;
     if (!this.voiceMode) {
+      // todo 开启后聚焦到input
     }
   }
 
