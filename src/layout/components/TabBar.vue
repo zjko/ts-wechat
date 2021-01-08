@@ -52,5 +52,6 @@ export default class TabBar extends Vue {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  order: 999;
 }
 </style>

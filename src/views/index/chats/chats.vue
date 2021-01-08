@@ -1,17 +1,27 @@
 <template>
 
   <ChatsHead :title="'微信(1)'" />
-  <div class="body">xxx</div>
+  <ChatCell />
+  <ChatCell />
+  <ChatCell />
+  <ChatCell />
+  <ChatCell />
+  <ChatCell />
+  <ChatCell />
+  <ChatCell />
+  
 
 </template>
 
 <script lang="ts">
+import ChatCell from "@/components/chat/chat-cell.vue"
 import ChatsHead from "@/components/index/chats-head.vue";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
   components: {
     ChatsHead,
+    ChatCell
   },
 })
 export default class Chats extends Vue {}
