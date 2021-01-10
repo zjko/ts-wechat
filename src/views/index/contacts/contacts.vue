@@ -1,11 +1,11 @@
 <template>
   <ChatsHead :title="'通讯录'" />
-
-  <ContactsCellGroup v-for="(item,index) in list"
+  <div class="body">
+    <ContactsCellGroup v-for="(item,index) in list"
                      :key="index"
                      :title="item.title"
                      :list="item.list" />
-
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,3 +23,11 @@ export default class Conctacts extends Vue {
   list = require("./data.json");
 }
 </script>
+
+<style scoped>
+.body{
+  height: calc(100% - 100px);
+  overflow: scroll;
+}
+
+</style>

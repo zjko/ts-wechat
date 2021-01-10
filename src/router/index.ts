@@ -16,6 +16,12 @@ export const routes = [
     name: 'chat',
     meta: { title: '聊天界面', icon: 'chat', affix: true }
   },
+  {
+    path: '/search',
+    component: () => import('@/views/search/search.vue'),
+    name: 'search',
+    meta: { title: '搜索界面', icon: 'chat', affix: true }
+  },
 ]
 
 // 3. Create the router instance and pass the `routes` option

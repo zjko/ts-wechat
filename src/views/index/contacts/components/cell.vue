@@ -17,7 +17,7 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class Conctacts extends Vue {
-  click(e) {
+  click() {
     console.log(this.data);
   }
 }

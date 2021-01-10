@@ -33,7 +33,7 @@ export default class extends Vue {}
   background-color: #fff;
 }
 .message {
-  background-color: rgb(119, 230, 119);
+  background-color: #fff;
   border-radius: 5px;
   margin-left: 20px;
   width: calc(100% - 50px);

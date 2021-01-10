@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import ChatCell from "@/components/chat/chat-cell.vue";
+import ChatCell from "./components/chat-cell.vue";
 import ChatsHead from "@/components/index/chats-head.vue";
 import { Options, Vue } from "vue-class-component";
 

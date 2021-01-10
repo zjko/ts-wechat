@@ -1,0 +1,66 @@
+[
+    [
+      {
+        "icon": "/me/wepay.svg",
+        "name": "朋友圈",
+        "path": "123"
+      }
+    ],
+    [
+      {
+        "icon": "/me/wepay.svg",
+        "name": "视频号",
+        "path": "123"
+      }
+    ],
+    [
+      {
+        "icon": "/me/wepay.svg",
+        "name": "扫一扫",
+        "path": "123"
+      },
+      {
+        "icon": "/me/wepay.svg",
+        "name": "摇一摇",
+        "path": "123"
+      }
+    ],
+    [
+      {
+        "icon": "/me/wepay.svg",
+        "name": "看一看",
+        "path": "123"
+      },
+      {
+        "icon": "/me/wepay.svg",
+        "name": "搜一搜",
+        "path": "123"
+      }
+    ],
+    [
+      {
+        "icon": "/me/wepay.svg",
+        "name": "附近的直播和人",
+        "path": "123"
+      }
+    ],
+    [
+      {
+        "icon": "/me/wepay.svg",
+        "name": "购物",
+        "path": "123"
+      },
+      {
+        "icon": "/me/wepay.svg",
+        "name": "游戏",
+        "path": "123"
+      }
+    ],
+    [
+      {
+        "icon": "/me/wepay.svg",
+        "name": "小程序",
+        "path": "123"
+      }
+    ]
+  ]

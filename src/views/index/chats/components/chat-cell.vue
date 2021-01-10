@@ -30,7 +30,7 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class extends Vue {
   nav(e: any) {
-    console.log(e);
+    this.$router.push('/chat')
   }
 }
 </script>
