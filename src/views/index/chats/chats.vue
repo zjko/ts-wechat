@@ -2,23 +2,14 @@
 
   <ChatsHead :title="'微信(1)'" />
   <div class="body">
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
-    <ChatCell />
+    <ChatCell v-for="(item,index) in chats"
+              :key="index"
+              :name="item.name"
+              :message="item.message"
+              :img="item.img"
+              :date="item.date"
+              :path="item.path" />
+
   </div>
 
 </template>
@@ -34,7 +25,9 @@ import { Options, Vue } from "vue-class-component";
     ChatCell,
   },
 })
-export default class Chats extends Vue {}
+export default class Chats extends Vue {
+  chats = require("./data.json");
+}
 </script>
 
 <style scoped>

@@ -3,7 +3,7 @@
     <img class="img"
          src="@/assets/common/back.svg"
          alt="back"
-         @click="back">
+         @click="$router.back()">
     <div class="name">聊天名称</div>
     <img class="img right"
          src="@/assets/common/more.svg"
@@ -20,11 +20,7 @@ import { Vue, Options } from "vue-class-component";
     name: { type: String },
   },
 })
-export default class extends Vue {
-  back(){
-    this.$router.back()
-  }
-}
+export default class extends Vue {}
 </script>
 <style scoped>
 .head {

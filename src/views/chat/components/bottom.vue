@@ -82,4 +82,8 @@ export default class extends Vue {
   justify-content: center;
   align-items: center;
 }
+
+input:focus {
+  outline: none;
+}
 </style>

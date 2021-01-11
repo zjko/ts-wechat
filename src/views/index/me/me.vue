@@ -7,10 +7,11 @@
   <div class="user-info">
     <div class="profile">
       <img class="profile-photo"
-           alt="头像" />
+           alt="头像"
+           :src="userInfo.img" />
       <div class="info">
-        <div>ZJKO</div>
-        <div>微信号：ZJKO_wx</div>
+        <div class="name">{{userInfo.name}}</div>
+        <div>微信号：{{userInfo.wxId}}</div>
       </div>
     </div>
 
@@ -41,6 +42,9 @@ import CellList from "@/components/common/cell-list.vue";
 })
 export default class Me extends Vue {
   list = require("./itemConfig.json");
+  userInfo = require("./data.json");
+
+  mounted() {}
 }
 </script>
 
@@ -62,7 +66,7 @@ export default class Me extends Vue {
 .profile-photo {
   width: 50px;
   height: 50px;
-  background-color: rgb(101, 80, 175);
+  background-color: abc;
   border-radius: 5px;
   margin-right: 20px;
 }
@@ -88,5 +92,9 @@ export default class Me extends Vue {
 
 .right {
   padding-right: 30px;
+}
+
+.name {
+  font-size: 25px;
 }
 </style>

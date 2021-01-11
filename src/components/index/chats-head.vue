@@ -5,7 +5,8 @@
     <div class="right">
       <img class="bottom"
            :src="require('@/assets/chats/search.svg')"
-           alt="搜索" />
+           alt="搜索"
+           @click="$router.push('search')" />
       <img class="bottom"
            :src="require('@/assets/chats/add.svg')"
            alt="更多" />

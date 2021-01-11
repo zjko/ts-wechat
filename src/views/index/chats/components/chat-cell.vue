@@ -1,19 +1,18 @@
 <template>
   <div class="cell"
-       @click="nav">
-       <img alt="icon"
-       class="img"
-       />
+       @click="$router.push('/chat')">
+    <img alt="icon"
+         class="img"
+         :src="img" />
+    <div class="center">
+      <div>{{name}}</div>
+      <div>{{message}}</div>
+    </div>
 
-       <div class="center">
-           <div>title</div>
-           <div>message</div>
-       </div>
-
-       <div class="right">
-           <div>下午5:39</div>
-           <div>status</div>
-       </div>
+    <div class="right">
+      <div>{{date}}</div>
+      <div class="status"></div>
+    </div>
   </div>
 </template>
 
@@ -23,16 +22,14 @@ import { Options, Vue } from "vue-class-component";
 @Options({
   name: "ChatCell",
   props: {
-    icon: { type: String },
+    img: { type: String },
     name: { type: String },
+    message: { type: String },
+    date: { type: String },
     path: { type: String },
   },
 })
-export default class extends Vue {
-  nav(e: any) {
-    this.$router.push('/chat')
-  }
-}
+export default class extends Vue {}
 </script>
 
 <style scoped>
@@ -47,13 +44,13 @@ export default class extends Vue {
 
   padding: 0px 10px 0px 20px;
   border-bottom-color: #eee;
-  border-bottom-style:solid;
-  border-bottom-width:1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
-.center{
-    flex:2;
-    margin-left: 10px;
+.center {
+  flex: 2;
+  margin-left: 10px;
 }
 .right {
   display: flex;
@@ -65,5 +62,8 @@ export default class extends Vue {
   width: 50px;
   height: 50px;
   border-radius: 5px;
+}
+.status {
+  height: 20px;
 }
 </style>
