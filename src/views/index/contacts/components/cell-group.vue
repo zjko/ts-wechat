@@ -33,12 +33,9 @@ export default class Conctacts extends Vue {}
 .cell {
   height: 40px;
   background-color: #fff;
-
   display: flex;
   flex-direction: row nowrap;
-
   align-items: center;
-
   padding: 0px 10px 0px 20px;
 }
 .img {

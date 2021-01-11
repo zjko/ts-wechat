@@ -1,0 +1,30 @@
+[
+  [
+    {
+      "name": "朋友圈",
+      "path": "abvc"
+    },
+    {
+      "name": "文章",
+      "path": "abvc"
+    },
+    {
+      "name": "公众号",
+      "path": "abvc"
+    }
+  ],
+  [
+    {
+      "name": "小程序",
+      "path": "abvc"
+    },
+    {
+      "name": "音乐",
+      "path": "abvc"
+    },
+    {
+      "name": "表情",
+      "path": "abvc"
+    }
+  ]
+]

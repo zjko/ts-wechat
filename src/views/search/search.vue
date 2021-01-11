@@ -31,42 +31,12 @@
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
 @Options({
-  components: {},
   props: {
     name: { type: String },
   },
 })
 export default class extends Vue {
-  tags = [
-    [
-      {
-        name: "朋友圈",
-        path: "abvc",
-      },
-      {
-        name: "文章",
-        path: "abvc",
-      },
-      {
-        name: "公众号",
-        path: "abvc",
-      },
-    ],
-    [
-      {
-        name: "小程序",
-        path: "abvc",
-      },
-      {
-        name: "音乐",
-        path: "abvc",
-      },
-      {
-        name: "表情",
-        path: "abvc",
-      },
-    ],
-  ];
+  tags = require("./tagConfig.json");
 }
 </script>
 <style scoped>

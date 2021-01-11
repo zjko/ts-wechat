@@ -2,7 +2,6 @@
   <ChatHead />
   <ChatCellMe />
   <ChatCellOther />
-
   <ChatBottom />
 </template>
 

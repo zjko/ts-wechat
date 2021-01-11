@@ -14,9 +14,7 @@
         <div>微信号：{{userInfo.wxId}}</div>
       </div>
     </div>
-
     <div class="right">
-
       <img class="qr-code"
            :src="require('@/assets/common/qr-code.svg')"
            alt="QR-code" />
@@ -25,11 +23,9 @@
            alt="right" />
     </div>
   </div>
-
   <CellList v-for="(item,index) in list"
             :list="item"
             :key="index" />
-
 </template>
 
 <script lang="ts">
@@ -43,8 +39,6 @@ import CellList from "@/components/common/cell-list.vue";
 export default class Me extends Vue {
   list = require("./itemConfig.json");
   userInfo = require("./data.json");
-
-  mounted() {}
 }
 </script>
 

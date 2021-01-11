@@ -1,6 +1,5 @@
 <template>
-
-  <ChatsHead :title="'微信(1)'" />
+  <ChatsHead :title="'微信(99)'" />
   <div class="body">
     <ChatCell v-for="(item,index) in chats"
               :key="index"
@@ -9,9 +8,7 @@
               :img="item.img"
               :date="item.date"
               :path="item.path" />
-
   </div>
-
 </template>
 
 <script lang="ts">
