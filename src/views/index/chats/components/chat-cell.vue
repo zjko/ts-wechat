@@ -3,14 +3,14 @@
        @click="$router.push('/chat')">
     <img alt="icon"
          class="img"
-         :src="img" />
+         :src="data.img" />
     <div class="center">
-      <div>{{name}}</div>
-      <div>{{message}}</div>
+      <div>{{data.name}}</div>
+      <div>{{data.message}}</div>
     </div>
 
     <div class="right">
-      <div>{{date}}</div>
+      <div>{{data.date}}</div>
       <div class="status"></div>
     </div>
   </div>
@@ -22,11 +22,7 @@ import { Options, Vue } from "vue-class-component";
 @Options({
   name: "ChatCell",
   props: {
-    img: { type: String },
-    name: { type: String },
-    message: { type: String },
-    date: { type: String },
-    path: { type: String },
+    data: { type: Object },
   },
 })
 export default class extends Vue {}

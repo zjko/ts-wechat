@@ -20,7 +20,11 @@ import { Vue, Options } from "vue-class-component";
     ChatCellOther,
   },
 })
-export default class extends Vue {}
+export default class extends Vue {
+  mounted() {
+    console.log(this.$route);
+  }
+}
 </script>
 <style scoped>
 </style>
