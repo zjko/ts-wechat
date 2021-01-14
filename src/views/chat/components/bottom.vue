@@ -9,6 +9,8 @@
          class="input-wrap">
       <input ref="input"
              type="text"
+             v-model="text"
+             @input="input"
              class="input" />
     </div>
     <div v-else
@@ -19,9 +21,15 @@
     <img src="@/assets/chat/smile.svg"
          alt="voice"
          class="img" />
-    <img src="@/assets/chats/add.svg"
+    <img v-if="showSendButton"
+         src="@/assets/chats/add.svg"
          alt="voice"
-         class="img" />
+         class="img showSendButton" />
+    <div v-else
+         class="sendButton">
+      发送
+    </div>
+
   </div>
 </template>
 
@@ -35,8 +43,9 @@ import { Vue, Options } from "vue-class-component";
 })
 export default class extends Vue {
   public $refs!: { input: HTMLFormElement };
-
+  text = "";
   voiceMode = false;
+  showSendButton = false;
 
   switchVoiceMode() {
     this.voiceMode = !this.voiceMode;
@@ -44,8 +53,10 @@ export default class extends Vue {
       // todo 开启后聚焦到input
     }
   }
-
-  mounted() {}
+  input(e) {
+    this.showSendButton = this.text.length < 1;
+    console.log("对方正在输入" + this.showSendButton);
+  }
 }
 </script>
 <style scoped>
@@ -64,6 +75,14 @@ export default class extends Vue {
 .img {
   height: 30px;
   width: 30px;
+  margin-right: 10px;
+}
+.sendButton {
+  height: 30px;
+  width: 60px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: rgb(119, 230, 119);
   margin-right: 10px;
 }
 .input {

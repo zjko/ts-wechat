@@ -18,7 +18,6 @@ import ChatCell from "./components/chat-cell.vue";
 import ChatBottom from "./components/bottom.vue";
 import { Vue, Options } from "vue-class-component";
 import { ChatModule } from "@/store/modules/chat";
-import { ChatRecord } from "./ChatRecord";
 @Options({
   name: "Chat",
   components: {

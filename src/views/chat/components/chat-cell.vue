@@ -59,7 +59,6 @@ export default class extends Vue {
     width = Math.floor(width / rate);
     height = Math.floor(height / rate);
     this.style = `width:${width}px; height:${height}px;`;
-    console.log(this.style);
   }
 }
 </script>
