@@ -3,7 +3,11 @@
   <div class="body">
     <ChatCell v-for="(item,index) in chats"
               :key="index"
-              :data="item" />
+              :name="item.name"
+              :img="item.img"
+              :message="item.message"
+              :date="item.date" />
+
   </div>
 </template>
 

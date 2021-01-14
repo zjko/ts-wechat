@@ -8,10 +8,10 @@
     <div class="profile">
       <img class="profile-photo"
            alt="头像"
-           :src="userInfo.img" />
+           :src="profilePicture" />
       <div class="info">
-        <div class="name">{{userInfo.name}}</div>
-        <div>微信号：{{userInfo.wxId}}</div>
+        <div class="name">{{name}}</div>
+        <div>微信号：{{wxId}}</div>
       </div>
     </div>
     <div class="right">
@@ -31,6 +31,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import CellList from "@/components/common/cell-list.vue";
+import { UserModule } from "@/store/modules/user";
 @Options({
   components: {
     CellList,
@@ -38,7 +39,15 @@ import CellList from "@/components/common/cell-list.vue";
 })
 export default class Me extends Vue {
   list = require("./itemConfig.json");
-  userInfo = require("./data.json");
+  get name() {
+    return UserModule.name;
+  }
+  get profilePicture() {
+    return UserModule.profilePicture;
+  }
+  get wxId() {
+    return UserModule.wxId;
+  }
 }
 </script>
 

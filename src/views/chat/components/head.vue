@@ -4,7 +4,7 @@
          src="@/assets/common/back.svg"
          alt="back"
          @click="$router.back()">
-    <div class="name">聊天名称</div>
+    <div class="name">{{name}}</div>
     <img class="img right"
          src="@/assets/common/more.svg"
          alt="more" />
@@ -13,14 +13,15 @@
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
+import { ChatModule } from "@/store/modules/chat";
 @Options({
   name: "ChatHead",
-  components: {},
-  props: {
-    name: { type: String },
-  },
 })
-export default class extends Vue {}
+export default class extends Vue {
+  get name() {
+    return ChatModule.name;
+  }
+}
 </script>
 <style scoped>
 .head {
@@ -32,6 +33,9 @@ export default class extends Vue {}
   flex-direction: row nowrap;
   justify-content: space-between;
   align-items: center;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #e0e0e0;
 }
 
 .name {

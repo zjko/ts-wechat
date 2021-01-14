@@ -1,16 +1,16 @@
 <template>
   <div class="cell"
-       @click="$router.push('/chat')">
+       @click="nav">
     <img alt="icon"
          class="img"
-         :src="data.img" />
+         :src="img" />
     <div class="center">
-      <div>{{data.name}}</div>
-      <div>{{data.message}}</div>
+      <div>{{name}}</div>
+      <div>{{message}}</div>
     </div>
 
     <div class="right">
-      <div>{{data.date}}</div>
+      <div>{{date}}</div>
       <div class="status"></div>
     </div>
   </div>
@@ -18,14 +18,25 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+import { ChatModule } from "@/store/modules/chat";
 @Options({
   name: "ChatCell",
   props: {
-    data: { type: Object },
+    name: { type: String },
+    img: { type: String },
+    message: { type: String },
+    date: { type: String },
   },
 })
-export default class extends Vue {}
+export default class extends Vue {
+  nav() {
+    this.$router.push("/chat");
+    ChatModule.setHead({
+      name: this.$props["name"],
+      img: this.$props["img"],
+    });
+  }
+}
 </script>
 
 <style scoped>
