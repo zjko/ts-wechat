@@ -52,31 +52,110 @@ export class ChatRecordsDao {
    * @param tableName 
    */
   private createTable(tableName: string): Promise<IDBDatabase> {
+    var theDB = this.db
     return new Promise((resolve, reject) => {
       ChatRecordsDao.version++
-      this.getDB().then(db => {
-        console.log(db.objectStoreNames)
+      this.getDB().then(res => {
+        console.log(theDB.objectStoreNames)
         console.log(tableName)
-        if (!db.objectStoreNames.contains(tableName)) {
+        if (!theDB.objectStoreNames.contains(tableName)) {
           console.log(tableName + "数据表不存在，则需要创建数据表")
-          let objectStore = db.createObjectStore(
-            tableName,
-            { keyPath: 'id' }
-          )
-          resolve(db)
+          theDB.createObjectStore('person', { keyPath: 'id' });
+          resolve(theDB)
         } else {
           console.log(tableName + "数据表存在，则无需创建")
-          resolve(db)
+          resolve(theDB)
         }
       })
+
     })
   }
 
   public add(conversionId: string, record: ChatRecord) {
-    let tableName = this.getTableName(conversionId)
-    this.createTable(tableName).then(res => {
-      console.log(res)
-    })
+    let databaseName = "123"
+
+    var request = window.indexedDB.open(databaseName, 1);
+    var db;
+
+    request.onerror = function (event) {
+      console.log('数据库打开报错');
+    };
+    request.onsuccess = function (event) {
+      db = request.result;
+      console.log('数据库打开成功');
+      add();
+      read();
+      readAll();
+    };
+    request.onupgradeneeded = function (event: any) {
+      db = event.target.result;
+      var objectStore;
+      if (!db.objectStoreNames.contains('person')) {
+        objectStore = db.createObjectStore('person', { keyPath: 'id' });
+        objectStore.createIndex('name', 'name', { unique: false });
+        objectStore.createIndex('email', 'email', { unique: true });
+      }
+    }
+
+    function add() {
+      console.log(db)
+      var request = db.transaction(['person'], 'readwrite')
+        .objectStore('person')
+        .add({ id: 1, name: '张三', age: 24, email: 'zhangsan@example.com' });
+
+      request.onsuccess = function (event) {
+        console.log('数据写入成功');
+      };
+
+      request.onerror = function (event) {
+        console.log('数据写入失败');
+        console.log(event);
+      }
+    }
+
+
+
+    function read() {
+      var transaction = db.transaction(['person']);
+      var objectStore = transaction.objectStore('person');
+      var request = objectStore.get(1);
+
+      request.onerror = function (event) {
+        console.log('事务失败');
+      };
+
+      request.onsuccess = function (event) {
+        if (request.result) {
+          console.log('Name: ' + request.result.name);
+          console.log('Age: ' + request.result.age);
+          console.log('Email: ' + request.result.email);
+        } else {
+          console.log('未获得数据记录');
+        }
+      };
+    }
+
+
+
+    function readAll() {
+      var objectStore = db.transaction('person').objectStore('person');
+
+      objectStore.openCursor().onsuccess = function (event) {
+        var cursor = event.target.result;
+
+        if (cursor) {
+          console.log('Id: ' + cursor.key);
+          console.log('Name: ' + cursor.value.name);
+          console.log('Age: ' + cursor.value.age);
+          console.log('Email: ' + cursor.value.email);
+          cursor.continue();
+        } else {
+          console.log('没有更多数据了！');
+        }
+      };
+    }
+
+
   }
 
   public static getTableName(conversionId: string) {
