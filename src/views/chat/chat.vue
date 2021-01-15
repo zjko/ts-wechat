@@ -44,6 +44,7 @@ export default class extends Vue {
       content: "any",
       createTime: 123,
     });
+    a.get("2132",1,1)
   }
 }
 </script>
