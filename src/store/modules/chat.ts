@@ -1,6 +1,6 @@
 import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-decorators'
 import store from '@/store'
-import { ChatRecord } from '@/libs/chat/ChatRecord'
+import { ChatRecord } from '@/database/dos/ChatRecord'
 
 
 export interface IChatState {

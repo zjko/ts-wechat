@@ -9,9 +9,11 @@ export enum MessageType {
 }
 
 export interface ChatRecord {
+  id: number
   isMe: boolean
   profilePicture: string
   type: MessageType
   content: any
+  createTime: number
 }
 

@@ -18,6 +18,9 @@ import ChatCell from "./components/chat-cell.vue";
 import ChatBottom from "./components/bottom.vue";
 import { Vue, Options } from "vue-class-component";
 import { ChatModule } from "@/store/modules/chat";
+
+import { MessageType } from "@/database/dos/ChatRecord";
+import { ChatRecordsDao } from "@/database/dao/ChatRecordsDao";
 @Options({
   name: "Chat",
   components: {
@@ -29,6 +32,18 @@ import { ChatModule } from "@/store/modules/chat";
 export default class extends Vue {
   get records() {
     return ChatModule.currentRecords;
+  }
+
+  mounted() {
+    let a = ChatRecordsDao.getInstance();
+    a.add("1231231", {
+      id: 123,
+      isMe: false,
+      profilePicture: "123",
+      type: MessageType.text,
+      content: "any",
+      createTime: 123,
+    });
   }
 }
 </script>
