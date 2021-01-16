@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { ChatModule } from "@/store/modules/chat";
+import { ChatModule } from "@/store/modules/chat/chat";
 @Options({
   name: "ChatCell",
   props: {

@@ -5,6 +5,7 @@ export interface IUserState {
   profilePicture: string
   name: string
   wxId: string
+  uuid:string
 }
 
 
@@ -14,6 +15,7 @@ class User extends VuexModule implements IUserState {
   public profilePicture = "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=221521724,481371925&fm=26&gp=0.jpg"
   public name = "zjko"
   public wxId = "zjko_wx"
+  public uuid = "1234"
 
 
 

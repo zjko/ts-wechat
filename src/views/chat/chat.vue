@@ -2,7 +2,9 @@
   <ChatHead />
   <div class="chat-container">
     <ChatCell v-for="(item,index) in records"
+
               :key="index"
+              :id="item.id"
               :isMe="item.isMe"
               :profilePicture="item.profilePicture"
               :type="item.type"
@@ -17,7 +19,7 @@ import ChatHead from "./components/head.vue";
 import ChatCell from "./components/chat-cell.vue";
 import ChatBottom from "./components/bottom.vue";
 import { Vue, Options } from "vue-class-component";
-import { ChatModule } from "@/store/modules/chat";
+import { ChatModule } from "@/store/modules/chat/chat";
 
 import { MessageType } from "@/database/dos/ChatRecord";
 import { ChatRecordsDao } from "@/database/dao/ChatRecordsDao";
@@ -36,15 +38,14 @@ export default class extends Vue {
 
   mounted() {
     let a = ChatRecordsDao.getInstance();
-    a.add("1231231", {
-      id: 123,
-      isMe: false,
-      profilePicture: "123",
+    a.add({
+      conversion:"2231",
+      sender:"213",
       type: MessageType.text,
       content: "any",
-      createTime: 123,
+      createTime: new Date().getTime(),
     });
-    a.get("2132",1,1)
+    a.get("2231",0,10)
   }
 }
 </script>

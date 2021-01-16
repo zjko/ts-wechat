@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import { ChatModule } from "@/store/modules/chat";
+import { ChatModule } from "@/store/modules/chat/chat";
 @Options({
   name: "ChatHead",
 })

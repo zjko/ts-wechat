@@ -32,7 +32,8 @@
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import { ChatRecordsDao } from "@/database/dao/ChatRecordsDao";
+import { MessageType } from "@/database/dos/ChatRecord";
+import {ChatModule} from '@/store/modules/chat/chat'
 
 @Options({
   name: "ChatBottom",
@@ -58,6 +59,14 @@ export default class extends Vue {
   }
   send(e) {
     console.log("发送消息" + this.text);
+    ChatModule.addChatRecord({
+      conversion:"2231",
+      sender:"213",
+      type: MessageType.text,
+      content: "any",
+      createTime: new Date().getTime(),
+    })
+    
   }
   mounted() {
     this.input("123");

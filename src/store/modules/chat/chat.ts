@@ -1,12 +1,17 @@
 import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-decorators'
 import store from '@/store'
-import { ChatRecord } from '@/database/dos/ChatRecord'
+import {ChatRecordDO,MessageType} from '@/database/dos/ChatRecord'
+import {ChatRecordsDao} from '@/database/dao/ChatRecordsDao'
+import {UserModule} from '../user'
 
+export interface ChatRecordCellVO {
+
+}
 
 export interface IChatState {
   img: string
   name: string
-  currentRecords: ChatRecord[]
+  currentRecords: ChatRecordCellVO[]
 }
 
 @Module({ dynamic: true, store, name: 'chat' })
@@ -23,8 +28,9 @@ class Chat extends VuexModule implements IChatState {
 
 
   @Mutation
-  private ADD_CHAT_RECORD(cr: ChatRecord) {
+  private ADD_CHAT_RECORD(cr: ChatRecordCellVO) {
     this.currentRecords.push(cr)
+    console.log(this.currentRecords)
   }
 
   @Action
@@ -33,7 +39,14 @@ class Chat extends VuexModule implements IChatState {
   }
 
   @Action
-  public addChatRecord(cr: ChatRecord) {
+  public addChatRecord(cr: ChatRecordCellVO) {
+    ChatRecordsDao.getInstance().add({
+      conversion:"2231",
+      sender:UserModule.uuid,
+      type: MessageType.text,
+      content: "any",
+      createTime: new Date().getTime(),
+    })
     this.ADD_CHAT_RECORD(cr)
   }
 

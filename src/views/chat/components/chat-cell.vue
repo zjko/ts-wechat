@@ -1,22 +1,25 @@
 <template>
-  <div :class="isMe?' continer-right':' continer-left'">
-    <img class="profile-photo"
-         :src="isMe? myProfilePicture:profilePicture"
-         alt="头像" />
+  <div :class="isMe ? ' continer-right' : ' continer-left'">
+    <img
+      class="profile-photo"
+      :src="isMe ? myProfilePicture : profilePicture"
+      alt="头像"
+    />
     <div class="message-warp">
-      <div :class="isMe?' message-right message':' message-left message' ">
+      <div :class="isMe ? ' message-right message' : ' message-left message'">
         <div v-if="type === 'text'">
-          {{content}}
+          {{ content }}
         </div>
 
         <div v-if="type === 'picture'">
-          <img ref="img"
-               :style="style"
-               alt="img"
-               :src="content"
-               @load="imgLoad" />
+          <img
+            ref="img"
+            :style="style"
+            alt="img"
+            :src="content"
+            @load="imgLoad"
+          />
         </div>
-
       </div>
     </div>
   </div>
@@ -28,6 +31,7 @@ import { UserModule } from "@/store/modules/user";
 @Options({
   name: "ChatCell",
   props: {
+    id: { type: Number },
     isMe: { type: Boolean },
     profilePicture: { type: String },
     type: { type: String },
