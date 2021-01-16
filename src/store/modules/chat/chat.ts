@@ -5,17 +5,22 @@ import {ChatRecordsDao} from '@/database/dao/ChatRecordsDao'
 import {UserModule} from '../user'
 
 export interface ChatRecordCellVO {
-
+  isMe: boolean
+  photo: string,
+  type: string,
+  content: string
 }
 
 export interface IChatState {
   img: string
   name: string
+  currentConversion:string
   currentRecords: ChatRecordCellVO[]
 }
 
 @Module({ dynamic: true, store, name: 'chat' })
 class Chat extends VuexModule implements IChatState {
+  public currentConversion = "1234"
   public img = "头像"
   public name = "名称"
   public currentRecords = require('@/data/chatRecords.json')
@@ -40,13 +45,14 @@ class Chat extends VuexModule implements IChatState {
 
   @Action
   public addChatRecord(cr: ChatRecordCellVO) {
-    ChatRecordsDao.getInstance().add({
-      conversion:"2231",
-      sender:UserModule.uuid,
-      type: MessageType.text,
-      content: "any",
-      createTime: new Date().getTime(),
-    })
+    
+    // ChatRecordsDao.getInstance().add({
+    //   conversion:this.currentConversion,
+    //   sender:UserModule.uuid,
+    //   type: MessageType.text,
+    //   content: "any",
+    //   createTime: new Date().getTime(),
+    // })
     this.ADD_CHAT_RECORD(cr)
   }
 

@@ -40,6 +40,9 @@ import {ChatModule} from '@/store/modules/chat/chat'
   props: {
     name: { type: String },
   },
+  emits:{
+    send:{type:String}
+  }
 })
 export default class extends Vue {
   public $refs!: { input: HTMLFormElement };
@@ -60,16 +63,13 @@ export default class extends Vue {
   send(e) {
     console.log("发送消息" + this.text);
     ChatModule.addChatRecord({
-      conversion:"2231",
-      sender:"213",
-      type: MessageType.text,
-      content: "any",
-      createTime: new Date().getTime(),
+      isMe: true,
+      photo:"",
+      type: "text",
+      content: this.text,
     })
-    
-  }
-  mounted() {
-    this.input("123");
+    this.text = ""
+    this.$emit("send",null)
   }
 }
 </script>

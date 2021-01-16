@@ -1,15 +1,16 @@
 <template>
   <ChatHead />
-  <div class="chat-container">
+  <div ref="body" class="chat-container">
     <ChatCell v-for="(item,index) in records"
 
               :key="index"
               :id="item.id"
               :isMe="item.isMe"
-              :profilePicture="item.profilePicture"
+              :profilePicture="item.photo"
               :type="item.type"
-              :content="item.content" />
-    <ChatBottom />
+              :content="item.content"
+               />
+    <ChatBottom @send="sendMessage"/>
   </div>
 
 </template>
@@ -46,6 +47,11 @@ export default class extends Vue {
       createTime: new Date().getTime(),
     });
     a.get("2231",0,10)
+  }
+
+  sendMessage(){
+    (this.$refs.body as HTMLElement).scrollTop = (this.$refs.body as HTMLElement).scrollHeight
+    console.log("send message")
   }
 }
 </script>

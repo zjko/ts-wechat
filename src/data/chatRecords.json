@@ -1,37 +1,37 @@
 [
   {
     "isMe": true,
-    "profilePicture": "123",
+    "photo": "123",
     "type": "text",
     "content": "true fsdafasdfsadfsdfsdafsad fsadfsadf fasdf"
   },
   {
     "isMe": true,
-    "profilePicture": "123",
+    "photo": "123",
     "type": "text",
     "content": "true fasdfsdafas fsadf sadf fsadf sadf sdafsad fsad fsadfsad fs fasdf sfsa asdf sfsa "
   },
   {
     "isMe": false,
-    "profilePicture": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
+    "photo": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
     "type": "text",
     "content": "false"
   },
   {
     "isMe": false,
-    "profilePicture": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
+    "photo": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
     "type": "picture",
     "content": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg"
   },
   {
     "isMe": false,
-    "profilePicture": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
+    "photo": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
     "type": "picture",
     "content": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1247841295,3295294707&fm=26&gp=0.jpg"
   },
   {
     "isMe": false,
-    "profilePicture": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
+    "photo": "http://imgsrc.baidu.com/forum/pic/item/52907dafa40f4bfb44fc9e960b4f78f0f6361852.jpg",
     "type": "picture",
     "content": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=153960715,2502274764&fm=26&gp=0.jpg"
   },
