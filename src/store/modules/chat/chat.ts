@@ -23,7 +23,7 @@ class Chat extends VuexModule implements IChatState {
   public currentConversion = "1234"
   public img = "头像"
   public name = "名称"
-  public currentRecords = require('@/data/chatRecords.json')
+  public currentRecords:ChatRecordCellVO[] = []
 
   @Mutation
   private SET_HEAD(head: { name: string, img: string }) {
@@ -35,6 +35,7 @@ class Chat extends VuexModule implements IChatState {
   @Mutation
   private ADD_CHAT_RECORD(cr: ChatRecordCellVO) {
     this.currentRecords.push(cr)
+    this.currentRecords = this.currentRecords.slice()
     console.log(this.currentRecords)
   }
 

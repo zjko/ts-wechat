@@ -55,33 +55,37 @@ export class ChatRecordsDao {
   }
 
   public get(conversion: string, page: number, size: number) {
-    this.db.transaction(function(tx) {
-      let start = page * size;
-      tx.executeSql(
-        `
-        SELECT * 
-        FROM chat_record 
-        where conversion = '${conversion}' 
-        order by create_time desc 
-        limit ${size} offset ${start}
-        `,
-        [],
-        (tx, results) => {
-          console.log("select success"+`
+    return new Promise((resolve,reject) => {
+      this.db.transaction(function(tx) {
+        let start = page * size;
+        tx.executeSql(
+          `
           SELECT * 
           FROM chat_record 
           where conversion = '${conversion}' 
           order by create_time desc 
           limit ${size} offset ${start}
-          `);
-          console.log(results);
-        },
-        (tx, error) => {
-          console.log("select fail:");
-          console.log(error);
-        }
-      );
-    });
+          `,
+          [],
+          (tx, results) => {
+            console.log("select success"+`
+            SELECT * 
+            FROM chat_record 
+            where conversion = '${conversion}' 
+            order by create_time desc 
+            limit ${size} offset ${start}
+            `);
+            console.log(results);
+          },
+          (tx, error) => {
+            console.log("select fail:");
+            console.log(error);
+          }
+        );
+      });
+
+    })
+    
   }
 
   public add(record: ChatRecordDO) {

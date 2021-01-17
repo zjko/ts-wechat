@@ -1,18 +1,17 @@
 <template>
   <ChatHead />
   <div ref="body" class="chat-container">
-    <ChatCell v-for="(item,index) in records"
-
-              :key="index"
-              :id="item.id"
-              :isMe="item.isMe"
-              :profilePicture="item.photo"
-              :type="item.type"
-              :content="item.content"
-               />
-    <ChatBottom @send="sendMessage"/>
+    <ChatCell
+      v-for="(item, index) in records"
+      :key="index"
+      :id="item.id"
+      :isMe="item.isMe"
+      :profilePicture="item.photo"
+      :type="item.type"
+      :content="item.content"
+    />
+    <ChatBottom />
   </div>
-
 </template>
 
 <script lang="ts">
@@ -20,8 +19,8 @@ import ChatHead from "./components/head.vue";
 import ChatCell from "./components/chat-cell.vue";
 import ChatBottom from "./components/bottom.vue";
 import { Vue, Options } from "vue-class-component";
-import { ChatModule } from "@/store/modules/chat/chat";
-
+import { ChatModule, ChatRecordCellVO } from "@/store/modules/chat/chat";
+import { Watch } from "vue-property-decorator";
 import { MessageType } from "@/database/dos/ChatRecord";
 import { ChatRecordsDao } from "@/database/dao/ChatRecordsDao";
 @Options({
@@ -37,21 +36,30 @@ export default class extends Vue {
     return ChatModule.currentRecords;
   }
 
+  @Watch("records")
+  private recordsChange(value: ChatRecordCellVO[]) {
+        this.toBottom();
+  }
+
+  private toBottom() {
+    this.$nextTick(() => {
+      console.log('111')
+      let element = this.$refs.body as HTMLElement;
+      element.scrollTop = element.scrollHeight;
+    });
+  }
+
   mounted() {
     let a = ChatRecordsDao.getInstance();
     a.add({
-      conversion:"2231",
-      sender:"213",
+      conversion: "2231",
+      sender: "213",
       type: MessageType.text,
       content: "any",
       createTime: new Date().getTime(),
     });
-    a.get("2231",0,10)
-  }
-
-  sendMessage(){
-    (this.$refs.body as HTMLElement).scrollTop = (this.$refs.body as HTMLElement).scrollHeight
-    console.log("send message")
+    a.get("2231", 0, 10);
+    this.toBottom();
   }
 }
 </script>

@@ -39,9 +39,6 @@ import {ChatModule} from '@/store/modules/chat/chat'
   name: "ChatBottom",
   props: {
     name: { type: String },
-  },
-  emits:{
-    send:{type:String}
   }
 })
 export default class extends Vue {
@@ -69,7 +66,6 @@ export default class extends Vue {
       content: this.text,
     })
     this.text = ""
-    this.$emit("send",null)
   }
 }
 </script>
