@@ -1,10 +1,10 @@
 export enum MessageType {
-  voice,
-  video,
-  text,
-  picture,
-  link,
-  feedCard
+  voice = 'voice',
+  video = 'video',
+  text = 'text',
+  picture = 'picture',
+  link = 'link',
+  feedCard = 'feedCard'
 
 }
 

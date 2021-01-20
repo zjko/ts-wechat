@@ -62,7 +62,7 @@ export default class extends Vue {
     ChatModule.addChatRecord({
       isMe: true,
       photo:"",
-      type: "text",
+      type: MessageType.text,
       content: this.text,
     })
     this.text = ""

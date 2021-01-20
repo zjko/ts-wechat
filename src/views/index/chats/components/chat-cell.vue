@@ -1,16 +1,13 @@
 <template>
-  <div class="cell"
-       @click="nav">
-    <img alt="icon"
-         class="img"
-         :src="img" />
+  <div class="cell" @click="nav">
+    <img alt="icon" class="img" :src="img" />
     <div class="center">
-      <div>{{name}}</div>
-      <div>{{message}}</div>
+      <div>{{ name }}</div>
+      <div>{{ message }}</div>
     </div>
 
     <div class="right">
-      <div>{{date}}</div>
+      <div>{{ date }}</div>
       <div class="status"></div>
     </div>
   </div>
@@ -26,14 +23,17 @@ import { ChatModule } from "@/store/modules/chat/chat";
     img: { type: String },
     message: { type: String },
     date: { type: String },
+    id: { type: String },
   },
 })
 export default class extends Vue {
+  
   nav() {
     this.$router.push("/chat");
     ChatModule.setHead({
       name: this.$props["name"],
       img: this.$props["img"],
+      id: this.$props["id"]
     });
   }
 }

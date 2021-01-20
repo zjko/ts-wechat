@@ -38,28 +38,14 @@ export default class extends Vue {
 
   @Watch("records")
   private recordsChange(value: ChatRecordCellVO[]) {
-        this.toBottom();
+    this.toBottom();
   }
 
   private toBottom() {
     this.$nextTick(() => {
-      console.log('111')
       let element = this.$refs.body as HTMLElement;
       element.scrollTop = element.scrollHeight;
     });
-  }
-
-  mounted() {
-    let a = ChatRecordsDao.getInstance();
-    a.add({
-      conversion: "2231",
-      sender: "213",
-      type: MessageType.text,
-      content: "any",
-      createTime: new Date().getTime(),
-    });
-    a.get("2231", 0, 10);
-    this.toBottom();
   }
 }
 </script>

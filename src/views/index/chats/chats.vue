@@ -6,7 +6,9 @@
               :name="item.name"
               :img="item.img"
               :message="item.message"
-              :date="item.date" />
+              :date="item.date" 
+              :id="item.id"
+              />
 
   </div>
 </template>
@@ -15,6 +17,7 @@
 import ChatCell from "./components/chat-cell.vue";
 import ChatsHead from "@/components/index/chats-head.vue";
 import { Options, Vue } from "vue-class-component";
+import {ChatModule} from '@/store/modules/chat/chat'
 
 @Options({
   components: {

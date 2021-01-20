@@ -7,7 +7,7 @@ import {UserModule} from '../user'
 export interface ChatRecordCellVO {
   isMe: boolean
   photo: string,
-  type: string,
+  type: MessageType,
   content: string
 }
 
@@ -26,34 +26,56 @@ class Chat extends VuexModule implements IChatState {
   public currentRecords:ChatRecordCellVO[] = []
 
   @Mutation
-  private SET_HEAD(head: { name: string, img: string }) {
+  private SET_HEAD(head: { name: string, img: string , id:string}) {
     this.name = head.name
     this.img = head.img
+    this.currentConversion = head.id
   }
 
+  @Mutation
+  private SET_CHAT_RECORD(list:ChatRecordCellVO[]) {
+    this.currentRecords = list
+  }
 
   @Mutation
   private ADD_CHAT_RECORD(cr: ChatRecordCellVO) {
     this.currentRecords.push(cr)
     this.currentRecords = this.currentRecords.slice()
-    console.log(this.currentRecords)
   }
 
   @Action
-  public setHead(head: { name: string, img: string }) {
+  public setHead(head: { name: string, img: string, id:string }) {
     this.SET_HEAD(head)
+    ChatRecordsDao.getInstance().get(
+      head.id,
+      0,
+      30
+    ).then(res=> {
+      let list:ChatRecordCellVO[] = [];
+      (res as []).forEach(item  => {
+        let t:any = item
+        let p:ChatRecordCellVO = {
+          isMe: UserModule.uuid === t.sender,
+          photo: "123",
+          type: t.content_type,
+          content: t.content
+        }
+        list.push(p)
+      });
+      this.SET_CHAT_RECORD(list.reverse())
+    })
   }
 
   @Action
   public addChatRecord(cr: ChatRecordCellVO) {
-    
-    // ChatRecordsDao.getInstance().add({
-    //   conversion:this.currentConversion,
-    //   sender:UserModule.uuid,
-    //   type: MessageType.text,
-    //   content: "any",
-    //   createTime: new Date().getTime(),
-    // })
+   
+    ChatRecordsDao.getInstance().add({
+      conversion:this.currentConversion,
+      sender:UserModule.uuid,
+      type: cr.type,
+      content: cr.content,
+      createTime: new Date().getTime(),
+    })
     this.ADD_CHAT_RECORD(cr)
   }
 

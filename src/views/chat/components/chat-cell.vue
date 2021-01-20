@@ -7,7 +7,7 @@
     />
     <div class="message-warp">
       <div :class="isMe ? ' message-right message' : ' message-left message'">
-        <div v-if="type === 'text'">
+        <div v-if="type == 'text'">
           {{ content }}
         </div>
 
@@ -28,6 +28,7 @@
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
 import { UserModule } from "@/store/modules/user";
+import { MessageType } from "@/database/dos/ChatRecord";
 @Options({
   name: "ChatCell",
   props: {
@@ -92,9 +93,10 @@ export default class extends Vue {
 }
 .message {
   border-radius: 5px;
-  width: calc(100% - 30px);
+  width: calc(100% - 25px);
   display: flex;
   flex-wrap: wrap-reverse;
+  word-break:break-all;
 }
 
 .message-warp {

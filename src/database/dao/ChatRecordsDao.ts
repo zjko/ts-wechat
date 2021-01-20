@@ -54,7 +54,7 @@ export class ChatRecordsDao {
     });
   }
 
-  public get(conversion: string, page: number, size: number) {
+  public get(conversion: string, page: number, size: number)  {
     return new Promise((resolve,reject) => {
       this.db.transaction(function(tx) {
         let start = page * size;
@@ -75,11 +75,17 @@ export class ChatRecordsDao {
             order by create_time desc 
             limit ${size} offset ${start}
             `);
-            console.log(results);
+            let len = results.rows.length
+            let arr:any[] = []
+            for (let i = 0; i < len; i++) {
+              arr.push(results.rows.item(i))
+            }
+            resolve(arr)
           },
           (tx, error) => {
             console.log("select fail:");
             console.log(error);
+            reject(error)
           }
         );
       });
@@ -99,11 +105,12 @@ export class ChatRecordsDao {
         [],
         (tx, results) => {
           console.log("insert success:"+
-          
           `
-        `
+          INSERT INTO chat_record 
+          (conversion, create_time, content_type, content, sender) VALUES 
+          ( '${record.conversion}', ${record.createTime}, '${record.type}', '${record.content}', '${record.sender}');
+          `
           );
-          console.log(new Date())
         },
         (tx, error) => {
           console.log("insert fail");
