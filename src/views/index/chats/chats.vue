@@ -26,7 +26,7 @@ import {ChatModule} from '@/store/modules/chat/chat'
   },
 })
 export default class Chats extends Vue {
-  chats = require("./data.json");
+  chats = require("@/data/chats.json");
 }
 </script>
 

@@ -11,6 +11,12 @@ export const routes = [
       index
   },
   {
+    path: '/login',
+    component: () => import('@/views/login/login.vue'),
+    name: 'login',
+    meta: { title: '登录界面', icon: 'chat', affix: true }
+  },
+  {
     path: '/chat',
     component: () => import('@/views/chat/chat.vue'),
     name: 'chat',
