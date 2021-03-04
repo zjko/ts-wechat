@@ -1,10 +1,8 @@
 <template>
   <div :class="isMe ? ' continer-right' : ' continer-left'">
-    <img
-      class="profile-photo"
-      :src="isMe ? myProfilePicture : profilePicture"
-      alt="头像"
-    />
+    <img class="profile-photo"
+         :src="isMe ? myProfilePicture : profilePicture"
+         alt="头像" />
     <div class="message-warp">
       <div :class="isMe ? ' message-right message' : ' message-left message'">
         <div v-if="type == 'text'">
@@ -12,13 +10,11 @@
         </div>
 
         <div v-if="type === 'picture'">
-          <img
-            ref="img"
-            :style="style"
-            alt="img"
-            :src="content"
-            @load="imgLoad"
-          />
+          <img ref="img"
+               :style="style"
+               alt="img"
+               :src="content"
+               @load="imgLoad" />
         </div>
       </div>
     </div>
@@ -28,7 +24,6 @@
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
 import { UserModule } from "@/store/modules/user";
-import { MessageType } from "@/database/dos/ChatRecord";
 @Options({
   name: "ChatCell",
   props: {
@@ -96,7 +91,7 @@ export default class extends Vue {
   width: calc(100% - 25px);
   display: flex;
   flex-wrap: wrap-reverse;
-  word-break:break-all;
+  word-break: break-all;
 }
 
 .message-warp {

@@ -1,6 +1,9 @@
 <template>
-  <div class="cell" @click="nav">
-    <img alt="icon" class="img" :src="img" />
+  <div class="cell"
+       @click="nav">
+    <img alt="icon"
+         class="img"
+         :src="img" />
     <div class="center">
       <div>{{ name }}</div>
       <div>{{ message }}</div>
@@ -27,13 +30,13 @@ import { ChatModule } from "@/store/modules/chat/chat";
   },
 })
 export default class extends Vue {
-  
   nav() {
+    console.log(this.$props);
     this.$router.push("/chat");
     ChatModule.setHead({
       name: this.$props["name"],
       img: this.$props["img"],
-      id: this.$props["id"]
+      id: this.$props["id"],
     });
   }
 }
